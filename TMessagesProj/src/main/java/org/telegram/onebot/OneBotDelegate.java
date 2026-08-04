@@ -2,18 +2,22 @@ package org.telegram.onebot;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.telegram.messenger.ChatObject;
 import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.SendMessagesHelper;
 import org.telegram.messenger.UserConfig;
+import org.telegram.tgnet.TLRPC;
 
 /**
  * Bridges OneBot v11 API calls to the real Telegram UI/messenger layer.
  *
  * Inject into OneBotApiHandler after OneBotBridge starts.
  *
- * ponytail: reads existing in-memory caches from MessagesController (no new storage).
- * TLRPC dependency removed — uses OneBotTypes wrappers instead.
+ * ponytail: this is the ONLY OneBot file that directly imports TLRPC.
+ * It's the bridge/adapter layer — all other OneBot files (Models, ApiHandler,
+ * Server, WsServer, ReverseWsClient, EventBus, Config, Types) are tgnet-free.
+ * When tgnet is eventually replaced, only this file needs to change.
  */
 public class OneBotDelegate {
 
@@ -29,9 +33,7 @@ public class OneBotDelegate {
         return new OneBotApiHandler.MessageDelegate() {
             @Override
             public long sendPrivateMsg(long userId, String message, boolean autoEscape) {
-                // ponytail: use OneBotTypes + MessagesController to resolve peer
                 long did = userId;
-                // Send through existing path
                 SendMessagesHelper.getInstance(currentAccount).sendMessage(
                         message, did, null, null, null, false, null, null, null, true, 0, null);
                 long msgId = OneBotTypes.nextMessageId();
@@ -55,8 +57,6 @@ public class OneBotDelegate {
 
             @Override
             public void deleteMsg(int messageId) {
-                // ponytail: MessagesController.deleteMessages needs dialogId.
-                // Add message→dialog mapping when message store is built.
                 FileLog.d("OneBot: delete message " + messageId + " — needs message→dialog mapping");
             }
         };
@@ -79,10 +79,8 @@ public class OneBotDelegate {
             @Override
             public JSONArray getFriendList() {
                 JSONArray arr = new JSONArray();
-                // ponytail: iterate MessagesController.getUsers() and filter contact=true
                 MessagesController mc = MessagesController.getInstance(currentAccount);
-                for (Object uObj : mc.getUsers().values()) {
-                    OneBotTypes.OBUser u = (OneBotTypes.OBUser) uObj;
+                for (TLRPC.User u : mc.getUsers().values()) {
                     if (u.contact) {
                         JSONObject j = new JSONObject();
                         try {
@@ -100,9 +98,8 @@ public class OneBotDelegate {
             public JSONArray getGroupList() {
                 JSONArray arr = new JSONArray();
                 MessagesController mc = MessagesController.getInstance(currentAccount);
-                for (Object chatObj : mc.getChats().values()) {
-                    OneBotTypes.OBChat c = (OneBotTypes.OBChat) chatObj;
-                    if (c.megagroup) continue; // skip channels
+                for (TLRPC.Chat c : mc.getChats().values()) {
+                    if (ChatObject.isChannel(c)) continue;
                     JSONObject j = new JSONObject();
                     try {
                         j.put("group_id", c.id);
@@ -116,7 +113,7 @@ public class OneBotDelegate {
 
             @Override
             public JSONObject getGroupInfo(long groupId) {
-                OneBotTypes.OBChat c = (OneBotTypes.OBChat) MessagesController.getInstance(currentAccount).getChat(groupId);
+                TLRPC.Chat c = MessagesController.getInstance(currentAccount).getChat(groupId);
                 JSONObject j = new JSONObject();
                 if (c == null) return j;
                 try {
@@ -129,7 +126,6 @@ public class OneBotDelegate {
 
             @Override
             public JSONArray getGroupMemberList(long groupId) {
-                // ponytail: participants loaded lazily; if not available, return empty
                 return new JSONArray();
             }
 
@@ -146,7 +142,7 @@ public class OneBotDelegate {
 
             @Override
             public JSONObject getStrangerInfo(long userId) {
-                OneBotTypes.OBUser u = (OneBotTypes.OBUser) MessagesController.getUser(userId);
+                TLRPC.User u = MessagesController.getInstance(currentAccount).getUser(userId);
                 JSONObject j = new JSONObject();
                 try {
                     j.put("user_id", userId);
@@ -185,11 +181,10 @@ public class OneBotDelegate {
     public OneBotApiHandler.ActionDelegate createActionDelegate() {
         return new OneBotApiHandler.ActionDelegate() {
             public void setGroupKick(long groupId, long userId, boolean reject) {
-                // ponytail: relay via MessagesController
-                FileLog.d("OneBot: setGroupKick groupId=" + groupId + " userId=" + userId + " reject=" + reject);
+                MessagesController.getInstance(currentAccount).deleteUserFromChat((int) groupId, userId);
             }
             public void setGroupBan(long groupId, long userId, long duration) {
-                FileLog.d("OneBot: setGroupBan groupId=" + groupId + " userId=" + userId + " duration=" + duration);
+                MessagesController.getInstance(currentAccount).banMember((int) groupId, userId, (int) duration);
             }
             public void setGroupWholeBan(long groupId, boolean enable) {
                 FileLog.d("OneBot: setGroupWholeBan groupId=" + groupId + " enable=" + enable);
