@@ -1,5 +1,6 @@
 package org.telegram.messenger;
 
+import org.telegram.onebot.OneBotBridge;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.ui.Components.Paint.PersistColorPalette;
 
@@ -39,6 +40,11 @@ public class BaseController {
 
     protected final ConnectionsManager getConnectionsManager() {
         return parentAccountInstance.getConnectionsManager();
+    }
+
+    /** ponytail: OneBot v11 bridge replacing tgnet. */
+    protected final OneBotBridge getOneBotBridge() {
+        return parentAccountInstance.getOneBotBridge();
     }
 
     protected final LocationController getLocationController() {

@@ -2,6 +2,7 @@ package org.telegram.messenger;
 
 import android.content.SharedPreferences;
 
+import org.telegram.onebot.OneBotBridge;
 import org.telegram.tgnet.ConnectionsManager;
 import org.telegram.ui.Components.Paint.PersistColorPalette;
 
@@ -52,6 +53,11 @@ public class AccountInstance {
 
     public ConnectionsManager getConnectionsManager() {
         return ConnectionsManager.getInstance(currentAccount);
+    }
+
+    /** ponytail: OneBot v11 bridge replacing tgnet. */
+    public OneBotBridge getOneBotBridge() {
+        return OneBotBridge.getInstance();
     }
 
     public NotificationsController getNotificationsController() {
