@@ -6,6 +6,7 @@ import org.telegram.messenger.FileLog;
 import org.telegram.messenger.MessagesController;
 import org.telegram.messenger.UserConfig;
 import org.telegram.tgnet.ConnectionsManager;
+import org.telegram.tgnet.TLObject;
 import org.telegram.tgnet.TLRPC;
 
 /**
@@ -144,7 +145,7 @@ public class OneBotDelegate {
             }
 
             // ponytail: avoid importing ChatObject — inline the check
-            private static boolean isChannel(TLRPC.Chat chat) {
+            private boolean isChannel(TLRPC.Chat chat) {
                 return chat instanceof TLRPC.TL_channel || chat instanceof TLRPC.TL_channelForbidden;
             }
 
@@ -217,27 +218,25 @@ public class OneBotDelegate {
 
     public OneBotApiHandler.ActionDelegate createActionDelegate() {
         return new OneBotApiHandler.ActionDelegate() {
-            // ponytail: batch the chat/user InputPeer helpers.
-            private TLRPC.InputPeer getUserPeer(long userId) {
-                return MessagesController.getInstance(currentAccount).getInputPeer(userId);
-            }
-            private TLRPC.InputPeer getChatPeer(long chatId) {
-                return MessagesController.getInstance(currentAccount).getInputPeer(-chatId);
+
+            // ponytail: getInputPeer for general peers, then cast to exact types
+            private TLRPC.InputPeer getPeer(long id) {
+                return MessagesController.getInstance(currentAccount).getInputPeer(id);
             }
 
             public void setGroupKick(long groupId, long userId, boolean reject) {
-                FileLog.d("OneBot: setGroupKick groupId=" + groupId + " userId=" + userId + " reject=" + reject);
+                FileLog.d("OneBot: setGroupKick groupId=" + groupId + " userId=" + userId);
                 TLRPC.TL_messages_deleteChatUser req = new TLRPC.TL_messages_deleteChatUser();
                 req.chat_id = groupId;
-                req.user_id = getUserPeer(userId);
+                req.user_id = MessagesController.getInstance(currentAccount).getInputUser(getPeer(userId));
                 req.revoke_history = reject;
                 send(req, "setGroupKick");
             }
             public void setGroupBan(long groupId, long userId, long duration) {
-                FileLog.d("OneBot: setGroupBan groupId=" + groupId + " userId=" + userId + " duration=" + duration);
+                FileLog.d("OneBot: setGroupBan groupId=" + groupId + " userId=" + userId);
                 TLRPC.TL_channels_editBanned req = new TLRPC.TL_channels_editBanned();
-                req.channel = getChatPeer(groupId);
-                req.participant = getUserPeer(userId);
+                req.channel = MessagesController.getInstance(currentAccount).getInputChannel(-groupId);
+                req.participant = getPeer(userId);
                 TLRPC.TL_chatBannedRights rights = new TLRPC.TL_chatBannedRights();
                 rights.view_messages = false;
                 rights.send_messages = true;
@@ -250,22 +249,19 @@ public class OneBotDelegate {
                 rights.change_info = true;
                 rights.invite_users = true;
                 rights.pin_messages = true;
-                rights.until_date = duration > 0 ? (int) (System.currentTimeMillis() / 1000 + duration) : Integer.MAX_VALUE;
+                rights.until_date = duration > 0 ? (int)(System.currentTimeMillis() / 1000 + duration) : 0;
                 req.banned_rights = rights;
-                req.flags = 1; // banned_rights populated
                 send(req, "setGroupBan");
             }
             public void setGroupWholeBan(long groupId, boolean enable) {
                 FileLog.d("OneBot: setGroupWholeBan groupId=" + groupId + " enable=" + enable);
-                // ponytail: OneBot "whole ban" → Telegram slow mode.
-                // enable=true → max slowmode seconds prevents all sends.
-                // Not a perfect semantic match but the closest single API.
+                // ponytail: OneBot "whole group mute" has no perfect Telegram API match — skip for now
             }
             public void setGroupAdmin(long groupId, long userId, boolean enable) {
                 FileLog.d("OneBot: setGroupAdmin groupId=" + groupId + " userId=" + userId + " enable=" + enable);
                 TLRPC.TL_channels_editAdmin req = new TLRPC.TL_channels_editAdmin();
-                req.channel = getChatPeer(groupId);
-                req.user_id = getUserPeer(userId);
+                req.channel = MessagesController.getInstance(currentAccount).getInputChannel(-groupId);
+                req.user_id = MessagesController.getInstance(currentAccount).getInputUser(getPeer(userId));
                 TLRPC.TL_chatAdminRights rights = new TLRPC.TL_chatAdminRights();
                 if (enable) {
                     rights.change_info = true;
@@ -273,7 +269,6 @@ public class OneBotDelegate {
                     rights.ban_users = true;
                     rights.invite_users = true;
                     rights.pin_messages = true;
-                    rights.add_admins = false;
                     rights.manage_call = true;
                 }
                 req.admin_rights = rights;
@@ -281,32 +276,31 @@ public class OneBotDelegate {
                 send(req, "setGroupAdmin");
             }
             public void setGroupCard(long groupId, long userId, String card) {
-                FileLog.d("OneBot: setGroupCard groupId=" + groupId + " userId=" + userId + " card=" + card);
+                FileLog.d("OneBot: setGroupCard groupId=" + groupId + " userId=" + userId);
             }
             public void setGroupName(long groupId, String name) {
-                FileLog.d("OneBot: setGroupName groupId=" + groupId + " name=" + name);
+                FileLog.d("OneBot: setGroupName groupId=" + groupId);
             }
             public void setGroupLeave(long groupId, boolean dismiss) {
-                FileLog.d("OneBot: setGroupLeave groupId=" + groupId + " dismiss=" + dismiss);
+                FileLog.d("OneBot: setGroupLeave groupId=" + groupId);
             }
             public void setGroupSpecialTitle(long groupId, long userId, String title, long duration) {
-                FileLog.d("OneBot: setGroupSpecialTitle groupId=" + groupId + " userId=" + userId + " title=" + title);
+                FileLog.d("OneBot: setGroupSpecialTitle groupId=" + groupId + " userId=" + userId);
             }
             public void setFriendAddRequest(String flag, boolean approve, String remark) {
-                FileLog.d("OneBot: setFriendAddRequest flag=" + flag + " approve=" + approve);
+                FileLog.d("OneBot: setFriendAddRequest flag=" + flag);
             }
             public void setGroupAddRequest(String flag, String subType, boolean approve, String reason) {
-                FileLog.d("OneBot: setGroupAddRequest flag=" + flag + " subType=" + subType + " approve=" + approve);
+                FileLog.d("OneBot: setGroupAddRequest flag=" + flag);
             }
             public void sendLike(long userId, long times) {
-                FileLog.d("OneBot: sendLike userId=" + userId + " times=" + times);
+                FileLog.d("OneBot: sendLike userId=" + userId);
             }
             public void cleanCache() {
                 FileLog.d("OneBot: cleanCache");
             }
 
-            // ponytail: single send utility. Fire-and-forget; log errors.
-            private void send(TLRPC.TLObject req, String name) {
+            private void send(TLObject req, String name) {
                 ConnectionsManager.getInstance(currentAccount).sendRequest(req,
                     (res, err) -> {
                         if (err != null) {
