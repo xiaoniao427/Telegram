@@ -9,7 +9,6 @@ import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
-import com.google.android.exoplayer2.Player;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.pip.activity.IPipActivity;

@@ -2,8 +2,6 @@ package org.telegram.messenger.chromecast;
 
 import android.net.Uri;
 
-import com.google.android.gms.cast.MediaInfo;
-import com.google.android.gms.cast.MediaMetadata;
 
 public class ChromecastMedia {
     public static final String IMAGE_JPEG = "image/jpeg";

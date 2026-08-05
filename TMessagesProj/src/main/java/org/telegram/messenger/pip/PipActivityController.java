@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.pip.activity.IPipActivityActionListener;

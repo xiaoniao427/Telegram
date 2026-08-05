@@ -17,7 +17,6 @@ package com.google.android.exoplayer2.extractor;
 
 import static java.lang.Math.min;
 
-import com.google.android.exoplayer2.util.Assertions;
 
 /**
  * Wraps a byte array, providing methods that allow it to be read as a Vorbis bitstream.

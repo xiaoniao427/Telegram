@@ -20,10 +20,6 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 import android.os.SystemClock;
-import com.google.android.exoplayer2.MediaItem.LiveConfiguration;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.Util;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 /**
  * A {@link LivePlaybackSpeedControl} that adjusts the playback speed using a proportional

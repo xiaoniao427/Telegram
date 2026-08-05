@@ -16,8 +16,6 @@
 package com.google.android.exoplayer2.extractor;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.ParserException;
 import java.io.EOFException;
 import java.io.IOException;
 import org.checkerframework.dataflow.qual.Pure;

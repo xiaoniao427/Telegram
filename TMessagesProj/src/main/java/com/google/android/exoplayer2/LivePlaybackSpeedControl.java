@@ -15,7 +15,6 @@
  */
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.MediaItem.LiveConfiguration;
 
 /**
  * Controls the playback speed while playing live content in order to maintain a steady target live

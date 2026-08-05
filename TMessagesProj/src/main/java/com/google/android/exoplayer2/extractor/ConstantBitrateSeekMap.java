@@ -18,7 +18,6 @@ package com.google.android.exoplayer2.extractor;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
-import com.google.android.exoplayer2.C;
 
 /**
  * A {@link SeekMap} implementation that assumes the stream has a constant bitrate and consists of

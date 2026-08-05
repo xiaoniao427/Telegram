@@ -12,7 +12,6 @@ import android.view.WindowInsets;
 
 import androidx.annotation.RequiresApi;
 
-import com.google.zxing.common.detector.MathUtils;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.R;

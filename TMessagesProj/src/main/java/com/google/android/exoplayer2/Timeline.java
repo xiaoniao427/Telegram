@@ -27,13 +27,6 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Pair;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.source.ads.AdPlaybackState;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.BundleUtil;
-import com.google.android.exoplayer2.util.Util;
-import com.google.common.collect.ImmutableList;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
-import com.google.errorprone.annotations.InlineMe;
 import java.util.ArrayList;
 import java.util.List;
 

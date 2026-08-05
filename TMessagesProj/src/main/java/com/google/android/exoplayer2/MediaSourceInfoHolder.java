@@ -15,7 +15,6 @@
  */
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.MediaSource;
 
 /** A holder of information about a {@link MediaSource}. */
 /* package */ interface MediaSourceInfoHolder {

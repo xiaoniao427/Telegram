@@ -10,7 +10,6 @@ import android.view.Surface;
 import android.view.SurfaceView;
 import android.view.TextureView;
 
-import com.google.android.exoplayer2.ExoPlayer;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.DispatchQueue;

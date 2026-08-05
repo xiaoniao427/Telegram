@@ -4,8 +4,6 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.wearable.MessageEvent;
-import com.google.android.gms.wearable.WearableListenerService;
 
 import org.telegram.ui.LaunchActivity;
 import org.telegram.ui.WearAuthSheet;

@@ -73,14 +73,6 @@ import android.widget.FrameLayout;
 import androidx.annotation.Nullable;
 import androidx.exifinterface.media.ExifInterface;
 
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.Player;
-import com.google.android.exoplayer2.extractor.jpeg.MotionPhotoDescription;
-import com.google.android.exoplayer2.extractor.jpeg.XmpMotionPhotoDescriptionParser;
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
-import com.google.android.gms.cast.MediaMetadata;
-import com.google.android.gms.common.images.WebImage;
 
 import org.telegram.messenger.audioinfo.AudioInfo;
 import org.telegram.messenger.chromecast.ChromecastController;

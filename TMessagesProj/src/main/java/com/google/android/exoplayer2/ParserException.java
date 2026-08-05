@@ -16,7 +16,6 @@
 package com.google.android.exoplayer2;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C.DataType;
 import java.io.IOException;
 
 /** Thrown when an error occurs parsing media data and metadata. */

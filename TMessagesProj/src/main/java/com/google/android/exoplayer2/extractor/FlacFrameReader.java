@@ -15,10 +15,6 @@
  */
 package com.google.android.exoplayer2.extractor;
 
-import com.google.android.exoplayer2.ParserException;
-import com.google.android.exoplayer2.extractor.flac.FlacConstants;
-import com.google.android.exoplayer2.util.ParsableByteArray;
-import com.google.android.exoplayer2.util.Util;
 import java.io.IOException;
 
 /**

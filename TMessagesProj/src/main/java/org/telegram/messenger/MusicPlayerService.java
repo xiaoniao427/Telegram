@@ -37,7 +37,6 @@ import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
 
-import com.google.android.exoplayer2.C;
 
 import org.telegram.messenger.audioinfo.AudioInfo;
 import org.telegram.tgnet.TLObject;

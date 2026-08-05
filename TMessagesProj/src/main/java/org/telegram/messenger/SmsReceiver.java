@@ -16,7 +16,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.google.android.gms.auth.api.phone.SmsRetriever;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

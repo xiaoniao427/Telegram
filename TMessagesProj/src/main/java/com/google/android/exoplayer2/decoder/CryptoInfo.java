@@ -17,9 +17,6 @@ package com.google.android.exoplayer2.decoder;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.Util;
 
 /**
  * Metadata describing the structure of an encrypted input sample.

@@ -19,8 +19,6 @@ import static com.google.android.exoplayer2.util.Assertions.checkArgument;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.util.Util;
-import com.google.common.base.Objects;
 
 /**
  * A rating expressed as "heart" or "no heart". It can be used to indicate whether the content is a

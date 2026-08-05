@@ -4,12 +4,6 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.cast.CastMediaControlIntent;
-import com.google.android.gms.cast.LaunchOptions;
-import com.google.android.gms.cast.framework.CastOptions;
-import com.google.android.gms.cast.framework.OptionsProvider;
-import com.google.android.gms.cast.framework.SessionProvider;
-import com.google.android.gms.cast.framework.media.CastMediaOptions;
 
 import java.util.List;
 

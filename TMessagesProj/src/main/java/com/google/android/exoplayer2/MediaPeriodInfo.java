@@ -16,10 +16,6 @@
 package com.google.android.exoplayer2;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.source.MediaPeriod;
-import com.google.android.exoplayer2.source.MediaSource.MediaPeriodId;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.Util;
 
 /** Stores the information required to load and play a {@link MediaPeriod}. */
 /* package */ final class MediaPeriodInfo {

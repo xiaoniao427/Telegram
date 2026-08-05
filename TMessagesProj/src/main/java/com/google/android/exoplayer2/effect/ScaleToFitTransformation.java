@@ -22,8 +22,6 @@ import static java.lang.Math.min;
 
 import android.graphics.Matrix;
 import android.util.Pair;
-import com.google.android.exoplayer2.util.GlUtil;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 
 /**

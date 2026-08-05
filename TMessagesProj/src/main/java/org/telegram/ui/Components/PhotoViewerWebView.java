@@ -33,7 +33,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
-import com.google.android.exoplayer2.ExoPlayer;
 
 import org.json.JSONObject;
 import org.telegram.messenger.AndroidUtilities;

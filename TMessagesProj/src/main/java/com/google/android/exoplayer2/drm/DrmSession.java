@@ -24,8 +24,6 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 import android.media.MediaDrm;
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.PlaybackException;
-import com.google.android.exoplayer2.decoder.CryptoConfig;
 import java.io.IOException;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;

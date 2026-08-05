@@ -18,8 +18,6 @@ package com.google.android.exoplayer2.extractor;
 import static com.google.android.exoplayer2.util.Assertions.checkState;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.audio.Ac3Util;
 import java.io.IOException;
 
 /**

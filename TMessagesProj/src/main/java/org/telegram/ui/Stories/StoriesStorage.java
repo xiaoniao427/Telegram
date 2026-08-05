@@ -4,7 +4,6 @@ import android.text.TextUtils;
 
 import androidx.collection.LongSparseArray;
 
-import com.google.android.exoplayer2.util.Consumer;
 
 import org.telegram.SQLite.SQLiteCursor;
 import org.telegram.SQLite.SQLiteDatabase;

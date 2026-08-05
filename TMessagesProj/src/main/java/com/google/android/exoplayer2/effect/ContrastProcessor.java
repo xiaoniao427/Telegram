@@ -19,9 +19,6 @@ package com.google.android.exoplayer2.effect;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.util.Pair;
-import com.google.android.exoplayer2.util.FrameProcessingException;
-import com.google.android.exoplayer2.util.GlProgram;
-import com.google.android.exoplayer2.util.GlUtil;
 import java.io.IOException;
 
 /** Applies a {@link Contrast} to each frame in the fragment shader. */

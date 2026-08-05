@@ -19,7 +19,6 @@ import static com.google.android.exoplayer2.util.Assertions.checkArgument;
 
 import android.opengl.Matrix;
 import android.util.Pair;
-import com.google.common.collect.ImmutableList;
 import java.util.Arrays;
 
 /** Utility functions for working with matrices, vertices, and polygons. */

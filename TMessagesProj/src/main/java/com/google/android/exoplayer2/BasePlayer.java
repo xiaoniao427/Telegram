@@ -21,8 +21,6 @@ import static java.lang.Math.min;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
-import com.google.android.exoplayer2.util.Util;
-import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 /** Abstract base {@link Player} which implements common implementation independent methods. */

@@ -9,7 +9,6 @@ import android.webkit.URLUtil;
 
 import androidx.annotation.Keep;
 
-import com.google.android.exoplayer2.util.MimeTypes;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;

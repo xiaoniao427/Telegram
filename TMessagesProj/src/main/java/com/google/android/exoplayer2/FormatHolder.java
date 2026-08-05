@@ -16,7 +16,6 @@
 package com.google.android.exoplayer2;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.drm.DrmSession;
 
 /** Holds a {@link Format}. */
 public final class FormatHolder {

@@ -23,10 +23,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.util.FrameProcessingException;
-import com.google.android.exoplayer2.util.GlUtil;
-import com.google.android.exoplayer2.util.Util;
 
 /** Transforms the colors of a frame by applying the same color lookup table to each frame. */
 public class SingleColorLut implements ColorLut {

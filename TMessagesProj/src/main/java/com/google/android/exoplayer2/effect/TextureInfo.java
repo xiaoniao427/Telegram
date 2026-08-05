@@ -15,7 +15,6 @@
  */
 package com.google.android.exoplayer2.effect;
 
-import com.google.android.exoplayer2.C;
 
 /** Contains information describing an OpenGL texture. */
 public final class TextureInfo {

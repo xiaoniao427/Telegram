@@ -15,9 +15,6 @@
  */
 package com.google.android.exoplayer2.extractor;
 
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.Util;
 
 /**
  * A {@link SeekMap} implementation for FLAC streams that contain a <a

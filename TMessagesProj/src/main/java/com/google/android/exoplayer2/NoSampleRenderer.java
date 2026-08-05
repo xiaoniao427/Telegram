@@ -16,10 +16,6 @@
 package com.google.android.exoplayer2;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.analytics.PlayerId;
-import com.google.android.exoplayer2.source.SampleStream;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.MediaClock;
 import java.io.IOException;
 import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 

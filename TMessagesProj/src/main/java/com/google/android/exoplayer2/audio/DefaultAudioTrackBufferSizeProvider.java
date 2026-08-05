@@ -24,10 +24,6 @@ import static com.google.common.primitives.Ints.checkedCast;
 import static java.lang.Math.max;
 
 import android.media.AudioTrack;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.audio.DefaultAudioSink.OutputMode;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
 import java.math.RoundingMode;
 
 /** Provide the buffer size to use when creating an {@link AudioTrack}. */

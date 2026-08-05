@@ -17,9 +17,6 @@ package com.google.android.exoplayer2.drm;
 
 import android.media.MediaCodec;
 import android.media.MediaCrypto;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.decoder.CryptoConfig;
-import com.google.android.exoplayer2.util.Util;
 import java.util.UUID;
 
 /**

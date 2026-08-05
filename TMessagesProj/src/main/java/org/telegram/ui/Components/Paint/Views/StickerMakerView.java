@@ -35,14 +35,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.google.mlkit.common.MlKitException;
-import com.google.mlkit.vision.common.InputImage;
-import com.google.mlkit.vision.label.ImageLabeling;
-import com.google.mlkit.vision.label.defaults.ImageLabelerOptions;
-import com.google.mlkit.vision.segmentation.subject.Subject;
-import com.google.mlkit.vision.segmentation.subject.SubjectSegmentation;
-import com.google.mlkit.vision.segmentation.subject.SubjectSegmenter;
-import com.google.mlkit.vision.segmentation.subject.SubjectSegmenterOptions;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.Emoji;

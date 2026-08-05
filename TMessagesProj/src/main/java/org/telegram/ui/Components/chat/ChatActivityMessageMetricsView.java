@@ -16,7 +16,6 @@ import android.view.ViewTreeObserver;
 import androidx.annotation.NonNull;
 import androidx.core.math.MathUtils;
 
-import com.google.android.exoplayer2.util.Log;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.BuildVars;

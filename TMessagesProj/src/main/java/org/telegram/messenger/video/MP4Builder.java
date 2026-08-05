@@ -36,8 +36,6 @@ import com.coremedia.iso.boxes.SyncSampleBox;
 import com.coremedia.iso.boxes.TimeToSampleBox;
 import com.coremedia.iso.boxes.TrackBox;
 import com.coremedia.iso.boxes.TrackHeaderBox;
-import com.googlecode.mp4parser.DataSource;
-import com.googlecode.mp4parser.util.Matrix;
 
 import org.telegram.messenger.AndroidUtilities;
 

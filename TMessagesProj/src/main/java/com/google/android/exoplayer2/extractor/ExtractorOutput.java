@@ -15,7 +15,6 @@
  */
 package com.google.android.exoplayer2.extractor;
 
-import com.google.android.exoplayer2.C;
 
 /** Receives stream level data extracted by an {@link Extractor}. */
 public interface ExtractorOutput {

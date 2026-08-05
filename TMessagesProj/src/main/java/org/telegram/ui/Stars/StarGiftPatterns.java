@@ -11,7 +11,6 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.google.zxing.common.detector.MathUtils;
 
 import androidx.core.graphics.ColorUtils;
 

@@ -8,13 +8,6 @@ import android.util.Base64;
 import android.util.Log;
 import android.util.Pair;
 
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.upstream.AssetDataSource;
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DataSpec;
-import com.google.android.exoplayer2.upstream.FileDataSource;
-import com.google.android.gms.cast.MediaMetadata;
-import com.google.android.gms.common.images.WebImage;
 
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.messenger.FileLog;

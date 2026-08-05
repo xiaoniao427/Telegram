@@ -9,8 +9,6 @@ import androidx.core.util.Pair;
 
 import com.android.billingclient.api.AccountIdentifiers;
 import com.android.billingclient.api.Purchase;
-import com.google.android.exoplayer2.util.Util;
-import com.google.common.base.Charsets;
 
 import org.json.JSONObject;
 import org.telegram.messenger.AccountInstance;

@@ -15,9 +15,6 @@
  */
 package com.google.android.exoplayer2.audio;
 
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.util.Util;
 
 /** Utilities for handling WAVE files. */
 public final class WavUtil {

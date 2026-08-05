@@ -17,17 +17,6 @@ package com.google.android.exoplayer2.ext.opus;
 
 import android.os.Handler;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.audio.AudioProcessor;
-import com.google.android.exoplayer2.audio.AudioRendererEventListener;
-import com.google.android.exoplayer2.audio.AudioSink;
-import com.google.android.exoplayer2.audio.AudioSink.SinkFormatSupport;
-import com.google.android.exoplayer2.audio.DecoderAudioRenderer;
-import com.google.android.exoplayer2.decoder.CryptoConfig;
-import com.google.android.exoplayer2.util.MimeTypes;
-import com.google.android.exoplayer2.util.TraceUtil;
-import com.google.android.exoplayer2.util.Util;
 
 /** Decodes and renders audio using the native Opus decoder. */
 public class LibopusAudioRenderer extends DecoderAudioRenderer<OpusDecoder> {

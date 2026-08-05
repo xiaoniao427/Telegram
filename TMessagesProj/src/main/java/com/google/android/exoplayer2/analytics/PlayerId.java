@@ -21,7 +21,6 @@ import static com.google.android.exoplayer2.util.Assertions.checkState;
 import android.media.metrics.LogSessionId;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import com.google.android.exoplayer2.util.Util;
 
 /** Identifier for a player instance. */
 public final class PlayerId {

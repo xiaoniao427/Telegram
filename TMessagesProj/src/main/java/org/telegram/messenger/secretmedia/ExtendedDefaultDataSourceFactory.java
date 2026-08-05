@@ -12,10 +12,6 @@ import android.content.Context;
 import android.net.Uri;
 import android.util.LongSparseArray;
 
-import com.google.android.exoplayer2.upstream.DataSource;
-import com.google.android.exoplayer2.upstream.DefaultDataSource;
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
-import com.google.android.exoplayer2.upstream.TransferListener;
 
 public final class ExtendedDefaultDataSourceFactory implements DataSource.Factory {
 

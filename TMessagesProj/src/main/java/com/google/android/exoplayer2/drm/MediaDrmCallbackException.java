@@ -16,7 +16,6 @@
 package com.google.android.exoplayer2.drm;
 
 import android.net.Uri;
-import com.google.android.exoplayer2.upstream.DataSpec;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;

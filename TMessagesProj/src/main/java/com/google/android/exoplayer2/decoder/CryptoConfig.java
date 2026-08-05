@@ -15,7 +15,6 @@
  */
 package com.google.android.exoplayer2.decoder;
 
-import com.google.android.exoplayer2.C;
 
 /**
  * Configuration for a decoder to allow it to decode encrypted media data. The configuration is

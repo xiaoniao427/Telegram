@@ -15,9 +15,6 @@
  */
 package com.google.android.exoplayer2.drm;
 
-import com.google.android.exoplayer2.drm.ExoMediaDrm.KeyRequest;
-import com.google.android.exoplayer2.drm.ExoMediaDrm.ProvisionRequest;
-import com.google.android.exoplayer2.util.Assertions;
 import java.util.UUID;
 
 /**

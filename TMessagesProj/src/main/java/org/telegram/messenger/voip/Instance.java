@@ -1,6 +1,5 @@
 package org.telegram.messenger.voip;
 
-import com.google.android.exoplayer2.util.Util;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -11,7 +11,6 @@ package org.telegram.messenger.video;
 import android.media.MediaCodec;
 import android.media.MediaFormat;
 
-import com.googlecode.mp4parser.util.Matrix;
 
 import java.io.File;
 import java.util.ArrayList;

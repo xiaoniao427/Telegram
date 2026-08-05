@@ -17,12 +17,6 @@ package com.google.android.exoplayer2;
 
 import androidx.annotation.CheckResult;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.Player.PlaybackSuppressionReason;
-import com.google.android.exoplayer2.metadata.Metadata;
-import com.google.android.exoplayer2.source.MediaSource.MediaPeriodId;
-import com.google.android.exoplayer2.source.TrackGroupArray;
-import com.google.android.exoplayer2.trackselection.TrackSelectorResult;
-import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 /** Information about an ongoing playback. */

@@ -17,8 +17,6 @@
 package com.google.android.exoplayer2.effect;
 
 import android.content.Context;
-import com.google.android.exoplayer2.util.FrameProcessingException;
-import com.google.common.collect.ImmutableList;
 
 /**
  * Specifies a 4x4 RGB color transformation matrix to apply to each frame in the fragment shader.

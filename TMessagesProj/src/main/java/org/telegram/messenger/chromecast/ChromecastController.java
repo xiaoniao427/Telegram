@@ -5,16 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.cast.CastDevice;
-import com.google.android.gms.cast.MediaError;
-import com.google.android.gms.cast.MediaLoadOptions;
-import com.google.android.gms.cast.MediaMetadata;
-import com.google.android.gms.cast.MediaStatus;
-import com.google.android.gms.cast.framework.CastContext;
-import com.google.android.gms.cast.framework.CastSession;
-import com.google.android.gms.cast.framework.SessionManager;
-import com.google.android.gms.cast.framework.SessionManagerListener;
-import com.google.android.gms.cast.framework.media.RemoteMediaClient;
 
 import org.telegram.messenger.ApplicationLoader;
 import org.telegram.ui.CastSync;

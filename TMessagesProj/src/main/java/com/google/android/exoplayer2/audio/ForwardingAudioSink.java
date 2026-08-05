@@ -18,9 +18,6 @@ package com.google.android.exoplayer2.audio;
 import android.media.AudioDeviceInfo;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.PlaybackParameters;
-import com.google.android.exoplayer2.analytics.PlayerId;
 import java.nio.ByteBuffer;
 
 /** An overridable {@link AudioSink} implementation forwarding all methods to another sink. */

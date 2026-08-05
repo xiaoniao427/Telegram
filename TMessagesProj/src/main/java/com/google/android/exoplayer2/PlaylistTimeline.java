@@ -15,8 +15,6 @@
  */
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.ShuffleOrder;
-import com.google.android.exoplayer2.util.Util;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;

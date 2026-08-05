@@ -17,10 +17,6 @@ package com.google.android.exoplayer2.drm;
 
 import android.os.Looper;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.PlaybackException;
-import com.google.android.exoplayer2.analytics.PlayerId;
 
 /** Manages a DRM session. */
 public interface DrmSessionManager {

@@ -15,8 +15,6 @@
  */
 package com.google.android.exoplayer2.ext.flac;
 
-import com.google.android.exoplayer2.ExoPlayerLibraryInfo;
-import com.google.android.exoplayer2.util.LibraryLoader;
 
 import org.telegram.messenger.NativeLoader;
 

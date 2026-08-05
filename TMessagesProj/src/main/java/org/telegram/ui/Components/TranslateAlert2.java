@@ -41,7 +41,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.common.base.Charsets;
 //import com.google.mlkit.common.model.RemoteModelManager;
 //import com.google.mlkit.nl.translate.TranslateLanguage;
 //import com.google.mlkit.nl.translate.TranslateRemoteModel;

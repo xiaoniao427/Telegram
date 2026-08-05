@@ -15,10 +15,6 @@
  */
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.source.TrackGroup;
-import com.google.android.exoplayer2.source.TrackGroupArray;
-import com.google.android.exoplayer2.trackselection.ExoTrackSelection;
-import com.google.android.exoplayer2.upstream.Allocator;
 
 /** Controls buffering of media. */
 public interface LoadControl {

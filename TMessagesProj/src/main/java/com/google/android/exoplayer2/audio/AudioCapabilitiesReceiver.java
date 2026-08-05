@@ -25,8 +25,6 @@ import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Handler;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.Util;
 
 /**
  * Receives broadcast events indicating changes to the device's audio capabilities, notifying a

@@ -20,8 +20,6 @@ import static com.google.android.exoplayer2.util.Assertions.checkArgument;
 import android.os.Bundle;
 import androidx.annotation.FloatRange;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.util.Util;
-import com.google.common.base.Objects;
 
 /** A rating expressed as a percentage. */
 public final class PercentageRating extends Rating {

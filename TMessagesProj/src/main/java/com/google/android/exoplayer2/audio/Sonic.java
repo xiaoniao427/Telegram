@@ -18,7 +18,6 @@ package com.google.android.exoplayer2.audio;
 
 import static java.lang.Math.min;
 
-import com.google.android.exoplayer2.util.Assertions;
 import java.nio.ShortBuffer;
 import java.util.Arrays;
 

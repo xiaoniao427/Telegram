@@ -114,7 +114,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 
 import org.json.JSONObject;
 import org.telegram.messenger.AndroidUtilities;

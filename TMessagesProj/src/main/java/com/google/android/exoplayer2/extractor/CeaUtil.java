@@ -15,9 +15,6 @@
  */
 package com.google.android.exoplayer2.extractor;
 
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.util.Log;
-import com.google.android.exoplayer2.util.ParsableByteArray;
 
 /** Utility methods for handling CEA-608/708 messages. Defined in A/53 Part 4:2009. */
 public final class CeaUtil {

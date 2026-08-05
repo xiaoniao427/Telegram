@@ -17,7 +17,6 @@ package com.google.android.exoplayer2.decoder;
 
 import static java.lang.Math.max;
 
-import com.google.android.exoplayer2.util.Util;
 
 /**
  * Maintains decoder event counts, for debugging purposes only.

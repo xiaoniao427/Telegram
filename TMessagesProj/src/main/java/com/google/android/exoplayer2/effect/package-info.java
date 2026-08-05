@@ -16,4 +16,3 @@
 @NonNullApi
 package com.google.android.exoplayer2.effect;
 
-import com.google.android.exoplayer2.util.NonNullApi;

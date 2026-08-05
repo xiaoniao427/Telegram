@@ -17,9 +17,6 @@ package com.google.android.exoplayer2.effect;
 
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
-import com.google.android.exoplayer2.util.FrameProcessingException;
-import com.google.android.exoplayer2.util.FrameProcessor;
-import com.google.android.exoplayer2.util.GlUtil;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;

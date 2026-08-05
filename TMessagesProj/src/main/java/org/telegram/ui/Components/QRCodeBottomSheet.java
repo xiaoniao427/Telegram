@@ -21,9 +21,6 @@ import android.widget.TextView;
 
 import androidx.core.graphics.ColorUtils;
 
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.qrcode.QRCodeWriter;
-import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.FileLog;

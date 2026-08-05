@@ -23,7 +23,6 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
 import android.graphics.Matrix;
 import android.util.Pair;
 import androidx.annotation.IntDef;
-import com.google.android.exoplayer2.C;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

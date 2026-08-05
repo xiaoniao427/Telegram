@@ -21,17 +21,6 @@ import static java.lang.Math.max;
 import android.os.Handler;
 import android.util.Pair;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.Player.RepeatMode;
-import com.google.android.exoplayer2.analytics.AnalyticsCollector;
-import com.google.android.exoplayer2.source.MediaPeriod;
-import com.google.android.exoplayer2.source.MediaSource.MediaPeriodId;
-import com.google.android.exoplayer2.source.ads.AdPlaybackState;
-import com.google.android.exoplayer2.trackselection.TrackSelector;
-import com.google.android.exoplayer2.trackselection.TrackSelectorResult;
-import com.google.android.exoplayer2.upstream.Allocator;
-import com.google.android.exoplayer2.util.Assertions;
-import com.google.android.exoplayer2.util.HandlerWrapper;
-import com.google.common.collect.ImmutableList;
 
 /**
  * Holds a queue of media periods, from the currently playing media period at the front to the

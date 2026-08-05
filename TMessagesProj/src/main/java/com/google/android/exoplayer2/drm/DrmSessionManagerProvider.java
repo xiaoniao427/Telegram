@@ -15,7 +15,6 @@
  */
 package com.google.android.exoplayer2.drm;
 
-import com.google.android.exoplayer2.MediaItem;
 
 /**
  * A provider to obtain a {@link DrmSessionManager} suitable for playing the content described by a

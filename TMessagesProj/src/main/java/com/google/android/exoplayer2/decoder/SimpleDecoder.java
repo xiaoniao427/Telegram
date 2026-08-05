@@ -17,8 +17,6 @@ package com.google.android.exoplayer2.decoder;
 
 import androidx.annotation.CallSuper;
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.util.Assertions;
 import java.util.ArrayDeque;
 
 /**

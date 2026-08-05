@@ -16,8 +16,6 @@
 package com.google.android.exoplayer2.decoder;
 
 import androidx.annotation.Nullable;
-import com.google.android.exoplayer2.C;
-import com.google.android.exoplayer2.Format;
 import java.nio.ByteBuffer;
 
 /** Video decoder output buffer containing video frame data. */
