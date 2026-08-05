@@ -263,7 +263,7 @@ public class OneBotWsServer {
             try { socket.close(); } catch (IOException ignored) {}
         }
 
-        private static String readLine(InputStream in) throws IOException {
+        private String readLine(InputStream in) throws IOException {
             StringBuilder sb = new StringBuilder();
             int c;
             while ((c = in.read()) != -1) {

@@ -112,8 +112,10 @@ public final class OneBotModels {
                 j.put("time", time);
                 j.put("self_id", selfId);
                 j.put("post_type", postType);
-                for (String key : fields.keySet()) {
-                    j.put(key, fields.get(key));
+                java.util.Iterator<String> it = fields.keys();
+                while (it.hasNext()) {
+                    String key = it.next();
+                    j.put(key, fields.opt(key));
                 }
             } catch (Exception ignored) {}
             return j;

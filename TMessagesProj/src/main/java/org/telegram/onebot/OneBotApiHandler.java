@@ -149,7 +149,7 @@ public class OneBotApiHandler {
             return okNull(req);
         });
         register("set_group_kick", req -> {
-            exec(actionDelegate, d -> d.setGroupKick(param(req, "group_id", 0), param(req, "user_id", 0)));
+            exec(actionDelegate, d -> d.setGroupKick(param(req, "group_id", 0), param(req, "user_id", 0), param(req, "reject_add_request", false)));
             return okNull(req);
         });
         register("set_group_ban", req -> {
@@ -225,14 +225,7 @@ public class OneBotApiHandler {
             if (dataDelegate != null) return OneBotModels.ApiResponse.ok(dataDelegate.getGroupMemberList(param(req, "group_id", 0)), req.echo);
             return OneBotModels.ApiResponse.ok(new JSONArray(), req.echo);
         });
-        register("get_group_honor_info", req -> ok("{\"group_id\":0}", req));
-        register("get_cookies", req -> ok("{\"cookies\":\"\"}", req));
-        register("get_csrf_token", req -> ok("{\"token\":0}", req));
-        register("get_credentials", req -> ok("{\"cookies\":\"\",\"csrf_token\":0}", req));
-        register("get_record", req -> ok("{\"file\":\"\"}", req));
-        register("get_image", req -> ok("{\"file\":\"\"}", req));
-        register("can_send_image", req -> ok("{\"yes\":false}", req));
-        register("can_send_record", req -> ok("{\"yes\":false}", req));
+register("get_group_honor_info", req -> ok("{\"group_id\":0}", req));
         register("get_status", req -> {
             if (dataDelegate != null) return OneBotModels.ApiResponse.ok(dataDelegate.getStatus(), req.echo);
             return ok("{\"online\":true,\"good\":true}", req);
