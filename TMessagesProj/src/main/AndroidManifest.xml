@@ -365,6 +365,14 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
         <activity
+            android:name="org.telegram.ui.CrashDetailActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+            android:hardwareAccelerated="true"
+            android:taskAffinity=""
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.TMessages.Transparent">
+        </activity>
+        <activity
             android:name="org.telegram.messenger.OpenChatReceiver"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true">

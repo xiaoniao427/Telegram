@@ -51,6 +51,17 @@ public class BuildVars {
                 final Thread.UncaughtExceptionHandler pastHandler = Thread.getDefaultUncaughtExceptionHandler();
                 Thread.setDefaultUncaughtExceptionHandler((thread, exception) -> {
                     FileLog.fatal(exception, false);
+                    // ponytail: save crash info and launch error detail page
+                    try {
+                        java.io.StringWriter sw = new java.io.StringWriter();
+                        java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+                        exception.printStackTrace(pw);
+                        String crashText = sw.toString();
+                        sharedPreferences.edit().putString("last_crash", crashText).commit();
+                        android.content.Intent intent = new android.content.Intent(ApplicationLoader.applicationContext, org.telegram.ui.CrashDetailActivity.class);
+                        intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK | android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        ApplicationLoader.applicationContext.startActivity(intent);
+                    } catch (Throwable ignored) {}
                     if (pastHandler != null) {
                         pastHandler.uncaughtException(thread, exception);
                     }
