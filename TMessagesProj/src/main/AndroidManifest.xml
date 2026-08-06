@@ -283,8 +283,6 @@
             </intent-filter>
             <meta-data android:name="android.service.chooser.chooser_target_service" android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
             <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
-            <meta-data
-                android:value="subject_segment" />
         </activity>
         <activity-alias
             android:name="org.telegram.ui.CallsActivity"
@@ -555,8 +553,7 @@
         </receiver>
 
 
-        <service
-        </service>
+        <!-- placeholder -->
 
         <receiver android:name=".StopLiveLocationReceiver" android:enabled="true"/>
 
@@ -613,7 +610,9 @@
         <receiver android:name=".ContactsWidgetProvider" android:exported="false">
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/contacts_widget_info" />
+            <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
         </receiver>
 
         <service
@@ -663,10 +662,6 @@
         -->
 
 
-        <meta-data android:name="android.max_aspect" android:value="2.5" />
-        <meta-data
-            android:value="org.telegram.messenger.chromecast.ChromecastOptionsProvider" />
-
-    </application>
+            </application>
 
 </manifest>

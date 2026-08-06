@@ -30,6 +30,9 @@
 
 
         <service
+            tools:replace="android:enabled"
+            android:enabled="false"
+            android:exported="false">
             <intent-filter>
             </intent-filter>
         </service>
