@@ -75,10 +75,6 @@ import androidx.exifinterface.media.ExifInterface;
 
 
 import org.telegram.messenger.audioinfo.AudioInfo;
-import org.telegram.messenger.chromecast.ChromecastController;
-import org.telegram.messenger.chromecast.ChromecastFileServer;
-import org.telegram.messenger.chromecast.ChromecastMedia;
-import org.telegram.messenger.chromecast.ChromecastMediaVariations;
 import org.telegram.messenger.video.MediaCodecVideoConvertor;
 import org.telegram.messenger.voip.VoIPService;
 import org.telegram.tgnet.ConnectionsManager;
@@ -91,7 +87,6 @@ import org.telegram.ui.ActionBar.AlertDialog;
 import org.telegram.ui.ActionBar.BaseFragment;
 import org.telegram.ui.ActionBar.Theme;
 import org.telegram.ui.Adapters.FiltersView;
-import org.telegram.ui.CastSync;
 import org.telegram.ui.ChatActivity;
 import org.telegram.ui.Components.EmbedBottomSheet;
 import org.telegram.ui.Components.PermissionRequest;
@@ -1567,9 +1562,9 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 volume = VOLUME_DUCK;
             }
             if (audioPlayer != null) {
-                audioPlayer.setVolume(CastSync.isActive() ? 0.0f : volume * audioVolume);
+                audioPlayer.setVolume(false ? 0.0f : volume * audioVolume);
             } else if (videoPlayer != null) {
-                videoPlayer.setVolume(CastSync.isActive() ? 0.0f : volume);
+                videoPlayer.setVolume(false ? 0.0f : volume);
             }
         } catch (Exception e) {
             FileLog.e(e);
@@ -2459,7 +2454,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 audioVolumeAnimator.cancel();
             }
 
-            if (!CastSync.isActive() && audioPlayer.isPlaying() && playingMessageObject != null && !playingMessageObject.isVoice()) {
+            if (!false && audioPlayer.isPlaying() && playingMessageObject != null && !playingMessageObject.isVoice()) {
                 VideoPlayer playerFinal = audioPlayer;
                 ValueAnimator valueAnimator = ValueAnimator.ofFloat(audioVolume, 0);
                 valueAnimator.addUpdateListener(valueAnimator1 -> {
@@ -2585,7 +2580,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             raiseChat = chat;
         }
         if (stopService) {
-            CastSync.stop();
+            // removed CastSync.stop();
         }
     }
 
@@ -2617,13 +2612,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     audioPlayer.seekTo(seekTo);
                     lastProgress = seekTo;
                     if (!ignorePlayerUpdate) {
-                        CastSync.seekTo(seekTo);
+                        // CastSync.seekTo(seekTo);
                     }
                 }
             } else if (videoPlayer != null) {
                 videoPlayer.seekTo((long) (videoPlayer.getDuration() * progress));
                 if (!ignorePlayerUpdate) {
-                    CastSync.seekTo((long) (videoPlayer.getDuration() * progress));
+                    // CastSync.seekTo((long) (videoPlayer.getDuration() * progress));
                 }
             }
         } catch (Exception e) {
@@ -2649,13 +2644,13 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 audioPlayer.seekTo(progressMs);
                 lastProgress = progressMs;
                 if (!ignorePlayerUpdate) {
-                    CastSync.seekTo(progressMs);
+                    // CastSync.seekTo(progressMs);
                 }
             } else if (videoPlayer != null) {
                 duration = videoPlayer.getDuration();
                 videoPlayer.seekTo(progressMs);
                 if (!ignorePlayerUpdate) {
-                    CastSync.seekTo(progressMs);
+                    // CastSync.seekTo(progressMs);
                 }
             }
         } catch (Exception e) {
@@ -3292,7 +3287,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                 .commit();
         NotificationCenter.getGlobalInstance().postNotificationName(NotificationCenter.messagePlayingSpeedChanged);
         if (!ignorePlayerUpdate) {
-            CastSync.setSpeed(speed);
+            // CastSync.setSpeed(speed);
         }
     }
 
@@ -3757,7 +3752,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                         //    currentTextureViewContainer.setVisibility(View.VISIBLE);
                         //}
                     }
-                    if (videoPlayer != null && CastSync.isActive()) {
+                    if (videoPlayer != null && false) {
                         videoPlayer.setMute(true);
                     }
                 }
@@ -3898,7 +3893,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                             lastProgress = seekTo;
                             seekToProgressPending = 0;
                         }
-                        if (audioPlayer != null && CastSync.isActive()) {
+                        if (audioPlayer != null && false) {
                             audioPlayer.setMute(true);
                         }
                     }
@@ -4102,7 +4097,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                     int seekTo = (int) (duration * playingMessageObject.audioProgress);
                     audioPlayer.seekTo(seekTo);
                     if (!ignorePlayerUpdate) {
-                        CastSync.seekTo(seekTo);
+                        // CastSync.seekTo(seekTo);
                     }
                 }
             } catch (Exception e2) {
@@ -4128,12 +4123,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
 
         try {
-            CastSync.check(CastSync.TYPE_MUSIC);
+            // CastSync.check(0);
             if (!ignorePlayerUpdate) {
-                if (ChromecastController.getInstance().isCasting()) {
-                    ChromecastController.getInstance().setCurrentMediaAndCastIfNeeded(getCurrentChromecastMedia());
+//                 if (ChromecastController.getInstance().isCasting()) {
+//                     ChromecastController.getInstance().setCurrentMediaAndCastIfNeeded(getCurrentChromecastMedia());
                 }
-                CastSync.setPlaying(true);
+                // CastSync.setPlaying(true);
             }
         } catch (Exception e) {
             FileLog.e(e);
@@ -4148,18 +4143,18 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
         ignorePlayerUpdate = true;
 
-        if (CastSync.isActive() && !CastSync.isUpdatePending()) {
-            final long castedPosition = CastSync.getPosition();
+        if (false && !false) {
+            final long castedPosition = 0L;
             final long currentPosition = getProgressMs(playingMessageObject);
             if (currentPosition >= 0 && castedPosition >= 0 && Math.abs(currentPosition - castedPosition) > 1000) {
                 seekToProgressMs(playingMessageObject, castedPosition);
             }
-            if (CastSync.isPlaying()) {
+            if (false) {
                 playMessage(playingMessageObject);
             } else {
                 pauseMessage(playingMessageObject);
             }
-            setPlaybackSpeed(true, CastSync.getSpeed());
+            setPlaybackSpeed(true, 1.0f);
         }
         setPlayerVolume();
 
@@ -4171,7 +4166,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         return getProgressMs(playingMessageObject);
     }
 
-    public ChromecastMediaVariations getCurrentChromecastMedia() {
+//     // public ChromecastMediaVariations getCurrentChromecastMedia() {
         if (playingMessageObject == null) {
             return null;
         }
@@ -4237,27 +4232,27 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
                             audioInfo.setCoverFile(coverFile);
                         }
                         if (coverFile != null && coverFile.exists()) {
-                            final String path = ChromecastController.getInstance().setCover(coverFile);
-                            metadata.addImage(new WebImage(Uri.parse(ChromecastFileServer.getUrlToSource(ChromecastFileServer.getHost(), path))));
+//                             final String path = ChromecastController.getInstance().setCover(coverFile);
+//                             metadata.addImage(new WebImage(Uri.parse(ChromecastFileServer.getUrlToSource(ChromecastFileServer.getHost(), path))));
                         }
                     }
                 }
-                final ChromecastMedia media = ChromecastMedia.Builder.fromUri(uri, "/player_" + playingMessageObject.getId(), mime)
+//                 final ChromecastMedia media = ChromecastMedia.Builder.fromUri(uri, "/player_" + playingMessageObject.getId(), mime)
                     .setTitle(title)
                     .setSubtitle(subtitle)
                     .setMetadata(metadata)
                     .build();
 
-                return ChromecastMediaVariations.of(media);
+//                 return ChromecastMediaVariations.of(media);
             }
         }
 
         if (videoPlayer != null) {
-            return videoPlayer.getCurrentChromecastMedia((document != null ? document.id : playingMessageObject.getId()) + "", title, subtitle);
+// //             return videoPlayer.getCurrentChromecastMedia((document != null ? document.id : playingMessageObject.getId()) + "", title, subtitle);
         }
 
         if (audioPlayer != null) {
-            return audioPlayer.getCurrentChromecastMedia((document != null ? document.id : playingMessageObject.getId()) + "", title, subtitle);
+// //             return audioPlayer.getCurrentChromecastMedia((document != null ? document.id : playingMessageObject.getId()) + "", title, subtitle);
         }
 
         return null;
@@ -4328,7 +4323,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         stopProgressTimer();
         try {
             if (audioPlayer != null) {
-                if (smoothFade && !CastSync.isActive() && !playingMessageObject.isVoice() && (playingMessageObject.getDuration() * (1f - playingMessageObject.audioProgress) > 1) && LaunchActivity.isResumed) {
+                if (smoothFade && !false && !playingMessageObject.isVoice() && (playingMessageObject.getDuration() * (1f - playingMessageObject.audioProgress) > 1) && LaunchActivity.isResumed) {
                     if (audioVolumeAnimator != null) {
                         audioVolumeAnimator.removeAllUpdateListeners();
                         audioVolumeAnimator.cancel();
@@ -4360,12 +4355,12 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         }
 
         try {
-            CastSync.check(CastSync.TYPE_MUSIC);
+            // CastSync.check(0);
             if (!ignorePlayerUpdate) {
-                if (ChromecastController.getInstance().isCasting()) {
-                    ChromecastController.getInstance().setCurrentMediaAndCastIfNeeded(getCurrentChromecastMedia());
+//                 if (ChromecastController.getInstance().isCasting()) {
+//                     ChromecastController.getInstance().setCurrentMediaAndCastIfNeeded(getCurrentChromecastMedia());
                 }
-                CastSync.setPlaying(false);
+                // CastSync.setPlaying(false);
             }
         } catch (Exception e) {
             FileLog.e(e);
@@ -4404,9 +4399,9 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             NotificationCenter.getInstance(playingMessageObject.currentAccount).postNotificationName(NotificationCenter.messagePlayingPlayStateChanged, playingMessageObject.getId());
 
             try {
-                CastSync.check(CastSync.TYPE_MUSIC);
+                // CastSync.check(0);
                 if (!ignorePlayerUpdate) {
-                    CastSync.setPlaying(true);
+                    // CastSync.setPlaying(true);
                 }
             } catch (Exception e) {
                 FileLog.e(e);

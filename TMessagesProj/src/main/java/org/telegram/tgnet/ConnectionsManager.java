@@ -878,11 +878,8 @@ public class ConnectionsManager extends BaseController {
                     currentTask = task;
                 } else {
                     if (BuildVars.LOGS_ENABLED) {
-                        FileLog.d("start firebase task");
                     }
-                    FirebaseTask task = new FirebaseTask(currentAccount);
                     task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, null, null, null);
-                    FileLog.d("12. currentTask = firebase");
                     currentTask = task;
                 }
             });
@@ -1458,12 +1455,9 @@ public class ConnectionsManager extends BaseController {
         }
     }
 
-    private static class FirebaseTask extends AsyncTask<Void, Void, NativeByteBuffer> {
 
         private int currentAccount;
-        private FirebaseRemoteConfig firebaseRemoteConfig;
 
-        public FirebaseTask(int instance) {
             super();
             currentAccount = instance;
         }
@@ -1473,33 +1467,25 @@ public class ConnectionsManager extends BaseController {
                 if (native_isTestBackend(currentAccount) != 0) {
                     throw new Exception("test backend");
                 }
-                firebaseRemoteConfig = FirebaseRemoteConfig.getInstance();
-                String currentValue = firebaseRemoteConfig.getString("ipconfigv3");
                 if (BuildVars.LOGS_ENABLED) {
-                    FileLog.d("current firebase value = " + currentValue);
                 }
 
-                firebaseRemoteConfig.fetch(0).addOnCompleteListener(finishedTask -> {
                     final boolean success = finishedTask.isSuccessful();
                     Utilities.stageQueue.postRunnable(() -> {
                         if (success) {
-                            firebaseRemoteConfig.activate().addOnCompleteListener(finishedTask2 -> {
                                 FileLog.d("6. currentTask = null");
                                 currentTask = null;
-                                String config = firebaseRemoteConfig.getString("ipconfigv3");
                                 if (!TextUtils.isEmpty(config)) {
                                     byte[] bytes = Base64.decode(config, Base64.DEFAULT);
                                     try {
                                         NativeByteBuffer buffer = new NativeByteBuffer(bytes.length);
                                         buffer.writeBytes(bytes);
-                                        int date = (int) (firebaseRemoteConfig.getInfo().getFetchTimeMillis() / 1000);
                                         native_applyDnsConfig(currentAccount, buffer.address, AccountInstance.getInstance(currentAccount).getUserConfig().getClientPhone(), date);
                                     } catch (Exception e) {
                                         FileLog.e(e);
                                     }
                                 } else {
                                     if (BuildVars.LOGS_ENABLED) {
-                                        FileLog.d("failed to get firebase result");
                                         FileLog.d("start dns txt task");
                                     }
                                     GoogleDnsLoadTask task = new GoogleDnsLoadTask(currentAccount);
@@ -1510,7 +1496,6 @@ public class ConnectionsManager extends BaseController {
                             });
                         } else {
                             if (BuildVars.LOGS_ENABLED) {
-                                FileLog.d("failed to get firebase result 2");
                                 FileLog.d("start dns txt task");
                             }
                             GoogleDnsLoadTask task = new GoogleDnsLoadTask(currentAccount);
@@ -1523,7 +1508,6 @@ public class ConnectionsManager extends BaseController {
             } catch (Throwable e) {
                 Utilities.stageQueue.postRunnable(() -> {
                     if (BuildVars.LOGS_ENABLED) {
-                        FileLog.d("failed to get firebase result");
                         FileLog.d("start dns txt task");
                     }
                     GoogleDnsLoadTask task = new GoogleDnsLoadTask(currentAccount);

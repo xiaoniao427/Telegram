@@ -10,7 +10,6 @@ configurations {
 }
 
 configurations.all {
-    exclude group: 'com.google.firebase', module: 'firebase-core'
     exclude group: 'androidx.recyclerview', module: 'recyclerview'
 }
 
@@ -196,4 +195,3 @@ android {
         checkReleaseBuilds false
     }
 }
-// ponytail: removed google-services plugin

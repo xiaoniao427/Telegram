@@ -84,7 +84,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
-    <uses-sdk tools:overrideLibrary="com.google.mlkit.vision.segmentation.subject"/>
 
     <queries>
         <package android:name="com.google.android.apps.maps"/>
@@ -285,7 +284,6 @@
             <meta-data android:name="android.service.chooser.chooser_target_service" android:value="androidx.sharetarget.ChooserTargetServiceCompat" />
             <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts" />
             <meta-data
-                android:name="com.google.mlkit.vision.DEPENDENCIES"
                 android:value="subject_segment" />
         </activity>
         <activity-alias
@@ -431,7 +429,6 @@
             android:name=".SmsReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.google.android.gms.auth.api.phone.SMS_RETRIEVED"/>
             </intent-filter>
         </receiver>
 
@@ -443,24 +440,18 @@
 
         <service
             android:name=".AuthenticatorService"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         >
-            <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator"/>
-            </intent-filter>
             <meta-data android:name="android.accounts.AccountAuthenticator"
                 android:resource="@xml/auth"/>
         </service>
 
         <service
             android:name=".ContactsSyncAdapterService"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         >
-            <intent-filter>
                 <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
             <meta-data android:name="android.content.SyncAdapter"
                 android:resource="@xml/sync_contacts" />
             <meta-data android:name="android.provider.CONTACTS_STRUCTURE"
@@ -476,13 +467,11 @@
         <service
             android:name=".BringAppForegroundService"
             android:enabled="true"
-            android:exported="true"
             android:foregroundServiceType="mediaPlayback"
         />
         <service
             android:name=".NotificationsService"
             android:enabled="true"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         />
         <service
@@ -493,25 +482,21 @@
         <service
             android:name=".VideoEncodingService"
             android:enabled="true"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         />
         <service
             android:name="org.telegram.ui.Stories.recorder.StoryUploadingService"
             android:enabled="true"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         />
         <service
             android:name=".ImportingService"
             android:enabled="true"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         />
         <service
             android:name=".LocationSharingService"
             android:enabled="true"
-            android:exported="true"
             android:foregroundServiceType="location|dataSync"
         />
         <service
@@ -522,28 +507,21 @@
         />
         <service
             android:name=".MusicPlayerService"
-            android:exported="true"
             android:enabled="true"
             android:foregroundServiceType="mediaPlayback"
         />
         <service
             android:name=".MusicBrowserService"
-            android:exported="true"
             android:foregroundServiceType="mediaPlayback"
         >
-            <intent-filter>
                 <action android:name="android.media.browse.MediaBrowserService"/>
-            </intent-filter>
         </service>
         <service
             android:name=".voip.TelegramConnectionService"
             android:permission="android.permission.BIND_TELECOM_CONNECTION_SERVICE"
-            android:exported="true"
             android:foregroundServiceType="dataSync"
         >
-            <intent-filter>
                 <action android:name="android.telecom.ConnectionService" />
-            </intent-filter>
         </service>
 
 		<receiver android:name=".MusicPlayerReceiver" android:exported="false">
@@ -576,15 +554,8 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".WearReplyReceiver" android:enabled="true"/>
 
         <service
-            android:name=".WearAuthListenerService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
-                <data android:scheme="wear" android:host="*" android:pathPrefix="/tg-wear-auth/" />
-            </intent-filter>
         </service>
 
         <receiver android:name=".StopLiveLocationReceiver" android:enabled="true"/>
@@ -642,9 +613,7 @@
         <receiver android:name=".ContactsWidgetProvider" android:exported="false">
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/contacts_widget_info" />
-            <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
         </receiver>
 
         <service
@@ -657,9 +626,7 @@
 <!--        <receiver android:name=".FeedWidgetProvider">-->
 <!--            <meta-data android:name="android.appwidget.provider"-->
 <!--                android:resource="@xml/feed_widget_info" />-->
-<!--            <intent-filter>-->
 <!--                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />-->
-<!--            </intent-filter>-->
 <!--        </receiver>-->
 
 <!--        <service android:name=".FeedWidgetService"-->
@@ -678,7 +645,6 @@
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_W" android:value="632dp" />
         <meta-data android:name="com.sec.android.multiwindow.MINIMUM_SIZE_H" android:value="598dp" />
 
-        <meta-data android:name="com.google.android.gms.wallet.api.enabled" android:value="true" />
 
         <!--
         <meta-data android:name="com.google.android.gms.car.notification.SmallIcon" android:resource="@drawable/ic_player" />
@@ -686,12 +652,9 @@
 
         <service
             android:name="org.telegram.messenger.car.TelegramCarAppService"
-            android:exported="true"
             android:foregroundServiceType="connectedDevice">
-            <intent-filter>
                 <action android:name="androidx.car.app.CarAppService" />
                 <category android:name="androidx.car.app.category.MESSAGING" />
-            </intent-filter>
         </service>
 
         <meta-data
@@ -699,11 +662,9 @@
             android:value="5" />
         -->
 
-        <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="face,barcode" />
 
         <meta-data android:name="android.max_aspect" android:value="2.5" />
         <meta-data
-            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
             android:value="org.telegram.messenger.chromecast.ChromecastOptionsProvider" />
 
     </application>
