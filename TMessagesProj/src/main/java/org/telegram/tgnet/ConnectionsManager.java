@@ -37,6 +37,12 @@ import org.telegram.messenger.SharedConfig;
 import org.telegram.messenger.StatsController;
 import org.telegram.messenger.UserConfig;
 import org.telegram.messenger.Utilities;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.integrity.IntegrityManager;
+import com.google.android.gms.integrity.IntegrityManagerFactory;
+import com.google.android.gms.integrity.IntegrityTokenRequest;
+import com.google.android.gms.integrity.IntegrityTokenResponse;
+import com.google.android.gms.tasks.Task;
 import org.telegram.ui.Components.VideoPlayer;
 import org.telegram.ui.LoginActivity;
 

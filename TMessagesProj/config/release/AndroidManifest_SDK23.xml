@@ -38,18 +38,22 @@
 
 
         <service
+            android:name=".BootAndSwitchReceiver"
             android:exported="true">
             <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </service>
 
 
 
         <receiver
+            android:name=".ScreenOnReceiver"
             tools:replace="android:enabled"
             android:enabled="false"
             android:exported="false">
             <intent-filter>
+                <action android:name="android.intent.action.SCREEN_ON" />
             </intent-filter>
         </receiver>
 
