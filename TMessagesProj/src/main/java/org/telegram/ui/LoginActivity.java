@@ -93,10 +93,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
-import com.google.android.gms.integrity.IntegrityManager;
-import com.google.android.gms.integrity.IntegrityManagerFactory;
-import com.google.android.gms.integrity.IntegrityTokenRequest;
-import com.google.android.gms.integrity.IntegrityTokenResponse;
+import com.google.android.play.core.integrity.IntegrityManager;
+import com.google.android.play.core.integrity.IntegrityManagerFactory;
+import com.google.android.play.core.integrity.IntegrityTokenRequest;
+import com.google.android.play.core.integrity.IntegrityTokenResponse;
 import com.google.android.gms.tasks.Task;
 
 import androidx.annotation.IntDef;
